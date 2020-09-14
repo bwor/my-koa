@@ -1,4 +1,3 @@
-// const Koa = require('koa')
 import Koa from 'koa'
 import KoaBody from 'koa-body' // 协议解析
 import cors from '@koa/cors' // 跨域请求
@@ -14,13 +13,13 @@ const isDevMode = process.env.NODE_ENV === 'production' ? false : true
  * 使用koa-compose 打包中间件
  */
 const middleWare = compose([
-    helmet(),
-    KoaBody(),
-    cors(),
-    statics(path.join(__dirname, '../public'))
+  helmet(),
+  KoaBody(),
+  cors(),
+  statics(path.join(__dirname, '../public')),
 ])
 if (!isDevMode) {
-    app.use(compress())
+  app.use(compress())
 }
 app.use(middleWare)
 app.use(router())
