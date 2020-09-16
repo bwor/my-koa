@@ -1,6 +1,6 @@
 FROM node:12-alpine
 
-LABEL maintainer=brian@toimc.com
+LABEL maintainer=1326876531@qq.com
 
 # 创建一个工作目录
 WORKDIR /app
