@@ -4,5 +4,7 @@ const router = new KoaRouter()
 
 router.prefix('/tag')
 router.get('/tags', TagController.getTags)
-
+router.post('/insertTag', TagController.insertTag)
+router.post('/modifyTag', TagController.modifyTag)
+router.post('/deleteTag', TagController.deleteTag)
 export default router

@@ -6,6 +6,7 @@ const LinksSchema = new Schema({
   name: { type: String },
   link: { type: String },
   sort: { type: Number },
+  isOffical: { type: Number },
   status: { type: Number },
 })
 
