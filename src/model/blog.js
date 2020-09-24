@@ -8,7 +8,7 @@ const BlogSchema = new Schema({
   release_time: { type: Date },
   hot: { type: Number },
   comments: { type: Number },
-  tag_id: { type: String },
+  tag_id: { type: Object },
   status: { type: Number },
   content: { type: String },
 })

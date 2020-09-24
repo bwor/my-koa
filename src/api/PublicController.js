@@ -1,7 +1,10 @@
 import svgCaptcha from 'svg-captcha'
+import qiniu from 'qiniu'
 // import { getValue, setValue } from '../config/RedisConfig'
+import config from '../config'
 class PublicController {
   constructor() {}
+  // 获取图片验证码
   async getCaptcha(ctx) {
     const body = ctx.request.query
     const newCaptca = svgCaptcha.create({
@@ -18,6 +21,24 @@ class PublicController {
     ctx.body = {
       code: 200,
       data: newCaptca.data,
+    }
+  }
+  // 获取图片token
+  async uploadToken(ctx) {
+    // 生成鉴权对象mac
+    const accessKey = config.qiniuAccessKey
+    const secretKey = config.qiniuSecretKey
+    const mac = new qiniu.auth.digest.Mac(accessKey, secretKey)
+    // 生成Bucket
+    const options = {
+      scope: config.qiniuBucket,
+    }
+    const putPolicy = new qiniu.rs.PutPolicy(options)
+    const uploadToken = putPolicy.uploadToken(mac)
+    ctx.body = {
+      code: 200,
+      msg: '',
+      data: { token: uploadToken },
     }
   }
 }
