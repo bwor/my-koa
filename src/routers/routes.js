@@ -5,11 +5,13 @@ import UserRouter from './UserRouter'
 import BlogRouter from './BlogRouter'
 import LinkRouter from './LinkRouter'
 import TagRouter from './TagRouter'
+import QiniuRouter from './QiniuRouter'
 export default combineRoutes(
   PublicRouter,
   SocialRouter,
   BlogRouter,
   UserRouter,
   LinkRouter,
-  TagRouter
+  TagRouter,
+  QiniuRouter
 )
