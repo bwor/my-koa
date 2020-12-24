@@ -15,14 +15,26 @@ class BlogController {
         as: 'tag',
       })
     } else {
-      result = await Blog.aggregate()
+      if (params.id !== 'undefined') {
+        console.log(params.id)
+        result = await Blog.aggregate()
         .lookup({
           from: 'tags',
           localField: 'tag_id',
           foreignField: '_id',
           as: 'tag',
         })
-        .match({ status: { $ne: 0 } })
+        .match({ status: { $ne: 0 },tag_id:mongoose.Types.ObjectId(params.id)})
+      } else {
+        result = await Blog.aggregate()
+        .lookup({
+          from: 'tags',
+          localField: 'tag_id',
+          foreignField: '_id',
+          as: 'tag',
+        })
+          .match({ status: { $ne: 0 } })
+      }
     }
     result = result.map((item) => {
       return {
