@@ -90,5 +90,15 @@ class BlogController {
       data: result,
     }
   }
+  async getBlogContent (ctx) {
+    const { id } = ctx.request.query
+    console.log(id)
+    const result = await Blog.findOne({ _id: id })
+    ctx.body = {
+      code: 200,
+      msg: '',
+      data:result
+    }
+  }
 }
 export default new BlogController()
