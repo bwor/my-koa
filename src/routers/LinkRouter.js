@@ -2,7 +2,7 @@ import KoaRouter from 'koa-router'
 import LinkController from '../api/LinkController'
 const router = new KoaRouter()
 
-router.prefix('/link')
+router.prefix('/koa/link')
 
 router.get('/getLinks', LinkController.getLinks)
 router.post('/insertLink', LinkController.insertLink)

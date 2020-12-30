@@ -5,7 +5,7 @@ import CompanyController from '../api/CompanyController'
 import ProjectController from '../api/ProjectController'
 const router = new KoaRouter()
 
-router.prefix('/user')
+router.prefix('/koa/user')
 router.get('/getUserInfo', UserController.getUserInfo)
 router.get('/getTechnology', TechController.getTechnology)
 router.get('/getCompanes', CompanyController.getCompanes)
